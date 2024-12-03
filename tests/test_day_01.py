@@ -3,7 +3,7 @@ import pytest
 from challenges.day_01 import part_a, part_b, read_puzzle_input_to_arrays
 
 
-class TestDayOne():
+class TestDay01():
     @pytest.fixture(autouse=True)
     def setUp(self) -> None:
         self.array1 = [3, 4, 2, 1, 3, 3]
