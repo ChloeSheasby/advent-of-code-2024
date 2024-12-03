@@ -1,6 +1,6 @@
 import pytest
 
-from day_02 import part_a, part_b, read_puzzle_input_to_nested_array
+from challenges.day_02 import part_a, part_b, read_puzzle_input_to_nested_array
 
 
 class TestDayOne():

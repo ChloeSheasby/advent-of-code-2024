@@ -1,6 +1,6 @@
 import pytest
 
-from day_01 import part_a, part_b, read_puzzle_input_to_arrays
+from challenges.day_01 import part_a, part_b, read_puzzle_input_to_arrays
 
 
 class TestDayOne():
