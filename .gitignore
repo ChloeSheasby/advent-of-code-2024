@@ -6,3 +6,4 @@ temp/
 /env
 /.vs
 pylintrc
+.pytest_cache
