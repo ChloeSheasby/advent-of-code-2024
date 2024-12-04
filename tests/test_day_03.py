@@ -43,3 +43,13 @@ class TestDay03():
         result = part_b(self.tokens_b)
 
         assert expected == result
+
+    def test_given_large_input_when_part_b_correct_answer_given(
+            self):
+        tokens = get_tokens(get_data(day=3, year=2024))
+
+        expected = 113965544
+
+        result = part_b(tokens)
+
+        assert expected == result
