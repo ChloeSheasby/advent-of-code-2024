@@ -13,8 +13,16 @@ class Lexer:
         character = self.data[self.index]
         self.index += 1
 
+        if character == 'd':
+            if self.data[self.index-1:self.index+6] == "don't()":
+                self.index += 6
+                return "dont"
+
+            if self.data[self.index-1:self.index+3] == "do()":
+                self.index += 3
+                return "do"
+
         if character == 'm' and self.data[self.index-1:self.index+2] == 'mul':
-            print(character)
             self.index += 2
             return "mul"
 
@@ -37,9 +45,22 @@ class Lexer:
             return ','
 
         return None
-    
 
-def parse(tokens):
+
+def get_tokens(data):
+    lexer = Lexer(data)
+
+    tokens = []
+    while True:
+        token = lexer.next()
+        if token == "end":
+            break
+        tokens.append(token)
+
+    return tokens
+
+
+def part_a(tokens):
     product = 0
     for i, token in enumerate(tokens):
         if (token == "mul" and tokens[i+1] == '('
@@ -52,22 +73,32 @@ def parse(tokens):
     return product
 
 
-def part_a(data):
-    lexer = Lexer(data)
+def part_b(tokens):
+    product = 0
+    allow = True
 
-    tokens = []
-    while True:
-        token = lexer.next()
-        if token == "end":
-            break
-        tokens.append(token)
+    for i, token in enumerate(tokens):
+        if token == "do":
+            allow = True
+        elif token == "dont":
+            allow = False
+        elif (token == "mul" and tokens[i+1] == '('
+                and isinstance(tokens[i+2], int)
+                and tokens[i+3] == ','
+                and isinstance(tokens[i+4], int)
+                and tokens[i+5] == ')'):
+            if allow:
+                product += (tokens[i+2] * tokens[i+4])
 
-    return parse(tokens)
+    return product
 
 
 def main():
-    answer1 = part_a(get_data(day=3, year=2024))
-    print(f"The answer is: {answer1}")
+    tokens = get_tokens(get_data(day=3, year=2024))
+    answer1 = part_a(tokens)
+    print(f"The product is: {answer1}")
+    answer2 = part_b(tokens)
+    print(f"The restricted product is: {answer2}")
 
 
 if __name__ == "__main__":
