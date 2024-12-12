@@ -45,12 +45,12 @@ class TestDay06():
 
         assert expected == result
 
-    # def test_given_large_input_when_part_b_correct_answer_given(
-    #         self):
-    #     expected = 1824
+    def test_given_large_input_when_part_b_correct_answer_given(
+            self):
+        expected = 1784
 
-    #     array = read_puzzle_input_to_nested_array()
+        array = read_puzzle_input_to_nested_array()
 
-    #     result = part_b(array)
+        result = part_b(array)
 
-    #     assert expected == result
+        assert expected == result
