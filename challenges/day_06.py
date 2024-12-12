@@ -45,7 +45,7 @@ def find_next_move(map, x, y, dir, double=False):
 
     dx, dy, new_dir = directions[dir]
 
-    if 0 > y + dy or y + dy >= len(map) or 0 > x + dx or x + dx >= len(map[0]) :
+    if 0 > y + dy or y + dy >= len(map) or 0 > x + dx or x + dx >= len(map[0]):
         return x + dx, y + dy, dir
 
     if map[y + dy][x + dx] != "#" and map[y + dy][x + dx] != "0":
@@ -108,7 +108,9 @@ def part_b(map):
                 temp_map = copy.deepcopy(map)
                 temp_map[i][j] = "0"
                 # run map and see if it gets into a loop
-                temp = run_maze_with_two_steppers(temp_map, x, y, x, y, "up", "up")
+                temp = run_maze_with_two_steppers(
+                    temp_map, x, y, x, y, "up", "up"
+                )
                 if temp:
                     loop_count += 1
 
