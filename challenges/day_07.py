@@ -1,19 +1,6 @@
 from aocd import get_data
 
 
-def read_puzzle_input_to_dictionary():
-    data = get_data(day=7, year=2024)
-
-    equations = {}
-
-    for line in data.split("\n"):
-        temp = line.split(":")
-        values = [int(x) for x in temp[1].strip().split()]
-        equations[temp[0]] = values
-
-    return equations
-
-
 def is_solvable(expected, values, current_value, index):
     if index == len(values):
         return current_value == expected
